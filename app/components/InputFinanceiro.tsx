@@ -15,15 +15,29 @@ export default function InputFinanceiro({
 
   return (
     <div className="flex flex-col">
-      <label className="text-sm font-semibold text-gray-600 mb-1">
+      <label className="text-sm font-semibold text-black mb-1">
         {label}
       </label>
+
       <input
         type={isNumber ? "number" : "text"}
         name={name}
-        value={value}
+        value={value === 0 ? "" : value}
         onChange={onChange}
-        className="p-2 border rounded-lg focus:ring-2 focus:ring-blue-400 transition"
+        className="
+          w-full
+          border
+          border-black
+          rounded-lg
+          px-3
+          py-2
+          bg-white
+          text-black
+          placeholder:text-gray-400
+          focus:outline-none
+          focus:ring-0
+          focus:border-black
+        "
       />
     </div>
   );

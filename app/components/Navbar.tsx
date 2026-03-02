@@ -26,7 +26,7 @@ export default function Navbar() {
         </button>
 
         {/* MENU DESKTOP */}
-        <nav className="hidden md:flex gap-8 text-gray-700 font-medium">
+        {/* <nav className="hidden md:flex gap-8 text-gray-700 font-medium">
           <button onClick={() => router.push("/app")} className="hover:text-pink-500 transition">
             Dashboard
           </button>
@@ -36,7 +36,7 @@ export default function Navbar() {
           <button onClick={() => router.push("/perfil")} className="hover:text-pink-500 transition">
             Perfil
           </button>
-        </nav>
+        </nav> */}
 
         {/* BOTÃO LOGOUT DESKTOP */}
         <div className="hidden md:block">

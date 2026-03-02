@@ -75,19 +75,27 @@ export default function Home() {
 
     setDados((prev) => ({
       ...prev,
-      [name]: name === "mes" ? value : Number(value),
+      [name]: name === "mes" ? value : value === "" ? "" : Number(value),
     }));
   }
 
   const totalEntradas = useMemo(
-    () => camposEntradas.reduce((acc, campo) => acc + dados[campo], 0),
-    [dados]
-  );
+  () =>
+    camposEntradas.reduce(
+      (acc, campo) => acc + Number(dados[campo] || 0),
+      0
+    ),
+  [dados]
+);
 
-  const totalDespesas = useMemo(
-    () => camposDespesas.reduce((acc, campo) => acc + dados[campo], 0),
-    [dados]
-  );
+ const totalDespesas = useMemo(
+  () =>
+    camposDespesas.reduce(
+      (acc, campo) => acc + Number(dados[campo] || 0),
+      0
+    ),
+  [dados]
+);
 
   const saldo = totalEntradas - totalDespesas;
 
@@ -114,6 +122,28 @@ export default function Home() {
     resetarFormulario();
     carregar();
   }
+
+  function formatarLabel(texto: string) {
+  const mapaAcentos: Record<string, string> = {
+    salario: "Salário",
+    outrasRendas: "Outras Rendas",
+    financiamento: "Financiamento",
+    prestCarro: "Prestação do Carro",
+    luz: "Luz",
+    agua: "Água",
+    seguroCarro: "Seguro do Carro",
+    internet: "Internet",
+    dizimo: "Dízimo",
+    telefonia: "Telefonia",
+    combustivel: "Combustível",
+    escola: "Escola",
+    cabelo: "Cabelo",
+    cartao: "Cartão",
+    outrasDespesas: "Outras Despesas",
+  };
+
+  return mapaAcentos[texto] || texto;
+}
 
   function resetarFormulario() {
     setDados({
@@ -198,7 +228,7 @@ export default function Home() {
 
           <button
             onClick={() => setModalAberto(true)}
-            className="w-full bg-blue-600 text-white py-3 rounded-xl"
+            className="w-full bg-blue-600 text-white py-3 rounded-xl cursor-pointer"
           >
             Adicionar Mês
           </button>
@@ -233,14 +263,14 @@ export default function Home() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => editar(item)}
-                      className="px-3 py-1 bg-yellow-400 text-white rounded"
+                      className="px-3 py-1 bg-yellow-400 text-white rounded cursor-pointer"
                     >
                       Editar
                     </button>
 
                     <button
                       onClick={() => excluir(item.id)}
-                      className="px-3 py-1 bg-red-500 text-white rounded"
+                      className="px-3 py-1 bg-red-500 text-white rounded cursor-pointer"
                     >
                       Excluir
                     </button>
@@ -269,7 +299,7 @@ export default function Home() {
             <InputFinanceiro
               key={campo}
               name={campo}
-              label={campo}
+              label={formatarLabel(campo)}
               value={dados[campo]}
               onChange={handleChange}
             />
@@ -279,7 +309,7 @@ export default function Home() {
             <InputFinanceiro
               key={campo}
               name={campo}
-              label={campo}
+              label={formatarLabel(campo)}
               value={dados[campo]}
               onChange={handleChange}
             />
