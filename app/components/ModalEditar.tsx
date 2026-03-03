@@ -22,7 +22,7 @@ export default function ModalEditar({
         {/* Botão fechar no canto */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-lg"
+          className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-lg cursor-pointer"
         >
           ✕
         </button>
@@ -36,14 +36,14 @@ export default function ModalEditar({
         <div className="flex justify-end gap-3 mt-6">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 transition"
+            className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400 transition cursor-pointer"
           >
             Cancelar
           </button>
 
           <button
             onClick={onSalvar}
-            className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition"
+            className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer"
           >
             Salvar Alterações
           </button>

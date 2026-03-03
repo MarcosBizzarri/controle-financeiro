@@ -2,6 +2,7 @@ export type DadosFinanceiros = {
   mes: string;
   salario: number;
   outrasRendas: number;
+  alimentacao: number;
   financiamento: number;
   prestCarro: number;
   luz: number;

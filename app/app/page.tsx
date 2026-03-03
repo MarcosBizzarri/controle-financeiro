@@ -23,6 +23,7 @@ import {
 } from "../types/financeiro";
 
 const camposDespesas: CamposFinanceiros[] = [
+  "alimentacao",
   "financiamento",
   "prestCarro",
   "luz",
@@ -50,6 +51,7 @@ export default function Home() {
     mes: "",
     salario: 0,
     outrasRendas: 0,
+    alimentacao: 0,
     financiamento: 0,
     prestCarro: 0,
     luz: 0,
@@ -127,6 +129,7 @@ export default function Home() {
   const mapaAcentos: Record<string, string> = {
     salario: "Salário",
     outrasRendas: "Outras Rendas",
+    alimentacao: "Alimentação",
     financiamento: "Financiamento",
     prestCarro: "Prestação do Carro",
     luz: "Luz",
@@ -150,6 +153,7 @@ export default function Home() {
       mes: "",
       salario: 0,
       outrasRendas: 0,
+      alimentacao: 0,
       financiamento: 0,
       prestCarro: 0,
       luz: 0,
@@ -220,7 +224,7 @@ export default function Home() {
           <div className="max-w-6xl mx-auto space-y-6">
 
 
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-4 text-black">
             <ResumoCard titulo="Entradas" valor={totalEntradas} cor="green" />
             <ResumoCard titulo="Despesas" valor={totalDespesas} cor="red" />
             <ResumoCard titulo="Saldo" valor={saldo} cor={saldo >= 0 ? "blue" : "red"} />
@@ -234,7 +238,7 @@ export default function Home() {
           </button>
 
           {/* HISTÓRICO */}
-          <div className="bg-white p-6 rounded-2xl shadow-md">
+          <div className="bg-white p-6 rounded-2xl shadow-md text-black">
             <h2 className="font-bold text-lg mb-4">Histórico</h2>
 
             {historico.map((item) => {
