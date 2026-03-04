@@ -42,6 +42,7 @@ export default function Login() {
     <input
       className="w-full p-3 rounded bg-slate-700 text-white border border-slate-600 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
       placeholder="Email"
+      autoComplete="email"
       type="email"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
@@ -50,6 +51,7 @@ export default function Login() {
     <div className="relative">
       <input
         type={showPassword ? "text" : "password"}
+        autoComplete="current-password"
         placeholder="Senha"
         value={senha}
         onChange={(e) => setSenha(e.target.value)}

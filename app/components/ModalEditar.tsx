@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 type ModalEditarProps = {
   aberto: boolean;
+  loading?: boolean; // 👈 ADICIONE ISSO
   onClose: () => void;
   onSalvar: () => void;
   children: ReactNode;
